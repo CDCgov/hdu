@@ -1,0 +1,30 @@
+MSH|^~\&|name|Lab^9999^CLIA|BTDOH|BT|9999|BT001|ORU^R01|99999|P|2.3.1
+PID|1||99999^^^^^Lab City&99999&CLIA|999|||DOB|F||U|^^^^ZipCode
+ORC|RE||99999||||||||||^^^FP&FAMILY PRACTICE&Lab||||||||Redacted|Address|Phonenumber|Address
+OBR|1||99999|630-4^Bacteria^LN^008847^Urine Culture, Routine^L|||202501211449|||||||202501211458|Urine^^Urine|999999^Redacted|Phonenumber||||Phonenumber|||MI|F||||||N39.0^URINARY TRACT INFECTION, SITE NOT SPECIFIED^IC10
+OBX|1|CE|630-4^Bacteria^LN^997131^RSLT#1^L|1|112283007^Escherichia coli^SCT^ECMS^Escherichia coli^L|||A|||F|||20250123205542|CLIANum^Lab City^CLIA||^Culture
+NTE|1|L|Escherichia coli
+NTE|2|L|25,000-50,000 colony forming units per mL
+NTE|3|L|Cefazolin <=4 ug/mL
+NTE|4|L|Cefazolin with an MIC <=16 predicts susceptibility to the oral agents
+NTE|5|L|cefaclor, cefdinir, cefpodoxime, cefprozil, cefuroxime, cephalexin,
+NTE|6|L|and loracarbef when used for therapy of uncomplicated urinary tract
+NTE|7|L|infections due to E. coli, Klebsiella pneumoniae, and Proteus
+NTE|8|L|mirabilis.
+OBR|2||99999|630-4^Bacteria^LN^997131^Result 1^L|||202501211449|||||||202501211458|Urine^^Urine|ProviderInfo|Phonenumber||||Phonenumber|||SI|F|630-4&Bacteria&LN&997131&RSLT#1&L^1^112283007&Escherichia coli&SCT&ECMS&Escherichia coli&L|||||N39.0^URINARY TRACT INFECTION, SITE NOT SPECIFIED^IC10
+OBX|1|CE|20-8^Amoxicillin+Clavulanate^LN^998001^Amoxicillin/Clavulanic Acid^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|2|CE|28-1^Ampicillin^LN^998002^Ampicillin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|3|CE|6644-9^Cefepime^LN^998049^Cefepime^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|4|CE|141-2^cefTRIAXone^LN^998012^Ceftriaxone^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|5|CE|51774-8^Cefuroxime^LN^998014^Cefuroxime^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|6|CE|185-9^Ciprofloxacin^LN^998017^Ciprofloxacin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|7|CE|35801-0^Ertapenem^LN^998183^Ertapenem^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|8|CE|267-5^Gentamicin^LN^998020^Gentamicin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|9|CE|279-0^Imipenem^LN^998023^Imipenem^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|10|CE|20396-8^levoFLOXacin^LN^998044^Levofloxacin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|11|CE|6652-2^Meropenem^LN^998045^Meropenem^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|12|CE|363-2^Nitrofurantoin^LN^998026^Nitrofurantoin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|13|CE|412-7^Piperacillin+Tazobactam^LN^998050^Piperacillin/Tazobactam^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|14|CE|496-0^Tetracycline^LN^998033^Tetracycline^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|15|CE|508-2^Tobramycin^LN^998036^Tobramycin^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC
+OBX|16|CE|516-5^Trimethoprim+Sulfamethoxazole^LN^998037^Trimethoprim/Sulfa^L|1|83185005^Sensitive^SCT^S^Sensitive^L|||S|||F|||20250123205542|CLIANum^Lab City^CLIA||^MIC

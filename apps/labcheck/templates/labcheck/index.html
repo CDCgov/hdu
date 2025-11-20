@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HL7 Validator and Parser</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .form-group { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        textarea { width: 100%; min-height: 150px; font-family: monospace; }
+        button { margin-top: 0.5em; }
+        .error { color: red; }
+        .output { background: #f4f4f4; padding: 1em; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>HL7 Validator and Parser </h1>
+    <h2>Validate Labs, ADTs, and more. </h2>
+
+<h3>API Request</h3>
+    <p>You can use this API endpoint to convert CDA documents to FHIR format programmatically. Here is an example using curl.</p>
+    <pre>
+         curl -X POST {{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'labcheck:api_index' %} -F "hl7_file=@path_to_your_hl7_file.hl7"
+    </pre>
+
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="hl7-input">HL7 Input</label>
+            <textarea id="hl7-input" name="hl7-input" placeholder="Paste HL7 message here">{{ hl7_input }}</textarea>
+            <button type="button" onclick="clearHL7Input()">Clear HL7 Input</button>
+        </div>
+        <div class="form-group">
+            <label for="json-output">JSON Output</label>
+            <textarea id="json-output" name="json-output" readonly placeholder="Parsed JSON will appear here">{% if parsed_json %}{{ parsed_json|safe }}{% endif %}</textarea>
+        </div>
+        <button type="submit">Parse</button>
+    </form>
+    {% if error %}
+        <div class="error">Error: {{ error }}</div>
+    {% endif %}
+    <script>
+        function clearHL7Input() {
+            document.getElementById('hl7-input').value = '';
+        }
+    </script>
+</body>
+</html>

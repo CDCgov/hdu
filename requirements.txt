@@ -1,0 +1,8 @@
+Django==5.2.6
+requests
+urllib3
+hl7
+python-fhir-converter
+dj-database-url
+
+

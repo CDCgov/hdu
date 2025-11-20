@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CDA2FHIR Converter</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .form-group { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        textarea { width: 100%; min-height: 150px; font-family: monospace; }
+        button { margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+    <h1>CDA2FHIR Converter</h1>
+    <h2>Convert CDA XML to FHIR JSON</h2>
+    <h3>API Request</h3>
+    <p>You can use this API endpoint to convert CDA documents to FHIR format programmatically. Here is an example using curl.</p>
+    <pre>
+         curl -X POST {{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'cda2fhir:api_index' %} -F "cda_file=@path_to_your_cda_file.xml"
+    </pre>
+    <h3>API Response</h3>
+    <p>The API response contains JSON. It contains a FHIR JSON Bundle or an error message in case of failure.</p>
+    <h4>Example of a good response</h4>
+    <pre>
+    {"resourceType": "Bundle",
+    "type": "batch",
+    "entry": [
+        {
+        "fullUrl": "urn:uuid:e8b66b6b-b5ee-1fa4-15de-840ff3ce5da8",
+        "resource": {
+            "resourceType": "Composition",
+            "id": "e8b66b6b-b5ee-1fa4-15de-840ff3ce5da8",
+            "identifier": {
+            "use": "official",
+            "value": "2.16.840.1.113883.9.9.9.9.9"
+            },
+            "status": "final",
+            "type": {
+            "coding": [
+                {
+                "code": "55751-2",
+                "display": "Public Health Case Report",
+                "system": "http://loinc.org"
+                }
+            ]
+            },
+            "date": "2020-11-07T09:44:21-05:00",
+            "title": "Initial Public Health Case Report",
+            "confidentiality": "N",
+            "attester": [
+            {
+                "party": {
+                "reference": "Practitioner/"
+                }
+            }
+            ],
+            "section": [
+            {
+                "title": "Plan of Treatment",
+                "text": {
+                "status": "generated",
+                "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Plan of Treatment</div>"
+                },
+                "code": {
+                "coding": [
+                    {
+                    "code": "18776-5",
+                    "display": "Plan of Treatment",
+                    "system": "http://loinc.org"
+                    }
+                ]
+                },
+                "mode": "snapshot"
+            },
+            {
+                "title": "Encounters",
+            ...
+    </pre>
+
+ <h4>Example of a bad response</h4>
+ <pre>
+  {"error": "Failed to render FHIR", 
+   "message": "RenderingError", 
+   "cause": "filter 'format_as_date_time': unexpected error: Malformed HL7 datetime 2020111501000, on line 48"
+  }
+ </pre>
+
+    <h2>Converting CDA to FHIR Using This Form</h3>
+    <p>You can do the same thing the API does using the form below.  Just paste valid CCDA data in the form below. Then click the "Convert" button.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="cda-input">CDA Input</label>
+            <textarea id="cda-input" name="cda-input" placeholder="Paste CDA XML here">{{cda_input}}</textarea>
+            <button type="button" onclick="clearCDAInput()">Clear CDA Input</button>
+        </div>
+        <button type="submit">Convert</button>
+        <div class="form-group">
+            <label for="fhir-output">FHIR Output</label>
+            <textarea id="fhir-output" name="fhir-output" placeholder="FHIR output will appear here">{{fhir_output}}</textarea>
+            <button type="button" onclick="copyFHIR()">Copy FHIR Output</button>
+        </div>
+    </form>
+    <script>
+        function copyFHIR() {
+            const fhirOutput = document.getElementById('fhir-output');
+            fhirOutput.select();
+            fhirOutput.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert('FHIR Output copied to clipboard!');
+        }
+        function clearCDAInput() {
+            document.getElementById('cda-input').value = '';
+        }
+    </script>
+</body>
+</html>
