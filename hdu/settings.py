@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+from getenv import env
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,11 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ctijkwm(iyvvgx^o$q*(aau*a=5nnzymqoalbou3!(1=mkf!54'
-
+HOSTNAME_URL = env("HOSTNAME_URL", 'http://localhost:8000')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ["hdu.cdcmeta.com","localhost",]
+CSRF_TRUSTED_ORIGINS = ['https://cdcmeta.com', "http://localhost", ]
 
-ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = ['https://cdcmeta.com', 
+                        "http://localhost:8080",
+                        "http://localhost:8000"]
 
 
 # Application definition
@@ -55,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'hdu.urls'
-
+STATIC_ROOT = env("STATIC_ROOT", 'dist')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -79,10 +84,9 @@ WSGI_APPLICATION = 'hdu.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=env('DATABASES_CUSTOM',
+                    'sqlite:///{}/db.sqlite3'.format(BASE_DIR))),
 }
 
 

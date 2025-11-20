@@ -4,5 +4,6 @@ urllib3
 hl7
 python-fhir-converter
 dj-database-url
-
+pillow
+getenv
 
