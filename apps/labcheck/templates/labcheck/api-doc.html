@@ -21,7 +21,7 @@
 
     <h3>API Request</h3>
     <pre>
-         curl -X POST {{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'labcheck:api_index' %} -F "hl7_file=@path_to_your_hl7_file.hl7"
+         curl -X POST {{ request.scheme }}s://{{ request.META.HTTP_HOST }}{% url 'labcheck:api_index' %} -F "hl7_file=@path_to_your_hl7_file.hl7"
     </pre>
 <h3>API Request Example Successful Response:</h3>
 <pre>
