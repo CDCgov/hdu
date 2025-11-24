@@ -4,6 +4,10 @@ from django.shortcuts import render
 from fhir_converter.renderers import  CcdaRenderer
 import json
 
+
+def api_doc(request):
+    return render(request, 'cda2fhir/api-doc.html', {})
+
 def index(request):
     
     if request.method == "POST":
@@ -20,6 +24,8 @@ def index(request):
         })
     else:
         return render(request, 'cda2fhir/index.html')
+
+
 @csrf_exempt
 def api_index(request):
     if request.method == "POST":

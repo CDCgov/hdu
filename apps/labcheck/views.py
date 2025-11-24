@@ -4,6 +4,11 @@ from .management.commands.parsehl7 import parse_message, invalid_hl7,  cleanup_h
 import json
 from django.views.decorators.csrf import csrf_exempt
 
+
+def api_doc(request):
+	return render(request, 'labcheck/api-doc.html', {})
+
+
 def index(request):
 	parsed_json = None
 	error = None

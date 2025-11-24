@@ -2,13 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tools</title>
+    <title>Health Data Utilties (HDU) and Related Tools</title>
 </head>
 <body>
     <h1>Available Tools</h1>
+
     <ul>
-        <li><a href="{% url 'cda2fhir:index' %}">cda2fhir Tool</a></li>
-        <li><a href="{% url 'labcheck:index' %}">labcheck Tool</a></li>
+        <li><a href="https://dataquality.cdcmeta.com">Data Quality Tools and APIs</a> - FHIR Codeset APIs, Codeset APIs, and CSVs. </li>
+        <li><a href="https://cdcmeta.com">USCDI+ Cheat Sheets for Public Health</a> - CSV tables and JSON files with simplified access to US Core FHIR Profiles URLS, descriptions, names, and more.</li>
+        <li><a href="{% url 'cda2fhir:index' %}">cda2fhir Parsing Tool</a> - Convert CDA(XML) to FHIR JSON Bundle. (You can download this tool and run it within your own environment.)</li>
+        <li><a href="{% url 'labcheck:index' %}">HL7v2 Validation and Parsing Tool</a> -Parse HL7v2 messages into a JSON object.(You can download this tool and run it within your own environment.)</li>
+    </ul>
+
+
+
+    <h1>Source Code</h1>
+    <p>
+      Code provided here is for research and development purposes only.  Please see the individual project repositories for more information.
+    </p>
+    <ul>
+        <li><a href="https://github.com/CDCgov/rmeta/">ReportMeta(CDCgov/rmeta)</a> - Contains the USCDI+ cheatsheets, tools for building the dataquality CDN, and more.</li>
+        <li><a href="https://github.com/CDCgov/hdu/"> Health Data Utilities (CDCgov/hdu)</a> - Contains Command-line utilties, web services,
+             and libraies for HL7v2, FHIR, and CDA extration and conversion. Services can be run locally or deployed to a cloud service provider.
+        </li>
+
+        <li><a href="https://github.com/CDCgov/routes">Routes and Triggers (CDCgov/routes)</a> - A proposed method to publish public-facing machine readble-documents of routes and triggers for the transmission of public health data.
+            See the <a href=https://github.com/CDCgov/routes/tree/main/prototypes>prototypes</a> folder for working examples.
+            </li>
     </ul>
 </body>
 </html>
