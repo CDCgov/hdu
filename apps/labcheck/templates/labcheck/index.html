@@ -16,13 +16,12 @@
 <body>
     <h1>HL7 Validator and Parser </h1>
     <h2>Validate Labs, ADTs, and more. </h2>
+    <a href="{% url 'labcheck:api_doc' %}">API Documentation</a>
 
-<h3>API Request</h3>
-    <p>You can use this API endpoint to convert CDA documents to FHIR format programmatically. Here is an example using curl.</p>
-    <pre>
-         curl -X POST {{ request.scheme }}://{{ request.META.HTTP_HOST }}{% url 'labcheck:api_index' %} -F "hl7_file=@path_to_your_hl7_file.hl7"
-    </pre>
-
+<p> Paste your HL7v2 message below and click "Parse" to validate and convert it to JSON format.
+    Do not include any PHI or sensitive information in the HL7 message unless you trust the 
+    host in the URL.
+</p>
 
     <form method="post">
         {% csrf_token %}
