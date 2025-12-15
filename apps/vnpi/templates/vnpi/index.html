@@ -34,7 +34,7 @@
                 return;
             }
             
-            fetch(`/vnpi/api/${npi}`)
+            fetch(`/verify-npi/api/${npi}`)
                 .then(response => response.json())
                 .then(data => {
                     jsonOutput.value = JSON.stringify(data, null, 2);
