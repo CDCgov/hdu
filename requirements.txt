@@ -1,4 +1,4 @@
-Django==5.2.8
+Django==5.2.9
 requests
 urllib3
 hl7
