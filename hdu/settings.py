@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.cda2fhir',
     'apps.labcheck',
+    'apps.vnpi',
     'apps.usahealthmap',
 
 ]
