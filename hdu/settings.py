@@ -26,7 +26,7 @@ HOSTNAME_URL = env("HOSTNAME_URL", 'http://localhost:8000')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ["hdu.cdcmeta.com","localhost",]
-CSRF_TRUSTED_ORIGINS = ['https://cdcmeta.com', "http://localhost", ]
+CSRF_TRUSTED_ORIGINS = ['https://cdcmeta.com', "http://localhost", "https://hdu.cdcmeta.com"]
 
 CORS_ALLOWED_ORIGINS = ['https://cdcmeta.com', 
                         "http://localhost:8080",
