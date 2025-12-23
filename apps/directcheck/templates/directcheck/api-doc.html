@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check a Direct Address or Endpoint</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .form-group { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        textarea { width: 100%; min-height: 150px; font-family: monospace; }
+        button { margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+    <h1>Check a Direct Address or Endpoint</h1>
+    <p>Check to see if an NPI number is valid by using the Luhn algorithm.  This is similiar to a check of a credit card number before it is submitted.
+        This tool can be used in front-end tool validation as illustrated in the demonstration.</p>
+    <h3>API Request</h3>
+
+    <pre>
+         curl {{ request.scheme }}s://{{ request.META.HTTP_HOST }}{% url 'directcheck:api' direct_endpoint='ett.healthit.gov' %}
+    </pre>
+    
+    <h3>Successful API Response</h3>
+    
+    <p>The API response contains JSON with information about the certificate(s) found.
+        If at least one certificate is found, then the top-level field "is_found" is true.</p>
+    <pre>
+{
+  "is_found": true,
+  "dns": {
+    "is_found": true,
+    "status": 200,
+    "message": "One or more certificates for ett.healthit.gov were found.",
+    "cert_details": [
+      {
+        "bound_to_expected_entity": true,
+        "serial_number": "01A7",
+        "subject": {
+          "C": "US",
+          "ST": "MD",
+          "L": "Boyds",
+          "O": "Drajer LLC",
+          "CN": "ett.healthit.gov",
+          "emailAddress": "ett.healthit.gov"
+        },
+        "status": "ACTIVE",
+        "is_expired": false,
+        "aia_present": true,
+        "crl_present": true,
+        "issuer": {
+          "C": "US",
+          "ST": "MD",
+          "L": "Boyds",
+          "O": "Drajer LLC",
+          "CN": "intermediate.healthit.gov",
+          "emailAddress": "intermediate.healthit.gov"
+        },
+        "notBefore": "20180925182423Z",
+        "notAfter": "20280922182423Z",
+        "signature_algorithm": "sha256WithRSAEncryption",
+        "version": 2,
+        "extensions": {
+          "basicConstraints": "CA:FALSE",
+          "subjectAltName": "DNS:ett.healthit.gov",
+          "subjectKeyIdentifier": "3A:13:6D:A3:73:DF:66:9B:E5:AB:69:48:FD:DC:8B:D0:73:0E:89:1C",
+          "authorityKeyIdentifier": "5F:5B:6D:1F:CD:E9:DC:BC:6F:80:B6:D9:B5:AD:CB:D0:57:ED:EB:39",
+          "keyUsage": "Digital Signature, Key Encipherment",
+          "crlDistributionPoints": "Full Name:\n  URI:http://ca.directca.org/crl/intermediate.healthit.gov.crl",
+          "authorityInfoAccess": "CA Issuers - URI:http://ca.directca.org/aia/intermediate.healthit.gov.der"
+        }
+      }
+    ]
+  },
+  "ldap": {
+    "is_found": false,
+    "status": 500,
+    "message": "Timeout",
+    "details": "The LDAP server was not found in DNS."
+  }
+}
+    </pre>
+
+ <h4>Example of a bad request/response using the endpoint "foo.bar". </h4>
+
+     <pre>
+         curl {{ request.scheme }}s://{{ request.META.HTTP_HOST }}{% url 'directcheck:api' direct_endpoint='foo.bar' %}
+    </pre>
+
+    <p>The response reports that the DNS and LDAP checks occured but no certificates were found for "foo.bar".</p>
+ <pre>
+{
+  "is_found": false,
+  "dns": {
+    "is_found": false,
+    "status": 404,
+    "message": "Certificate not found.",
+    "details": "No DNS server found."
+  },
+  "ldap": {
+    "is_found": false,
+    "status": 404,
+    "message": "No certificate found.",
+    "details": "No LDAP server was found."
+  }
+}
+ </pre>
+
+
+
+</body>
+</html>

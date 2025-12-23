@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Direct Certificate</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .form-group { margin-bottom: 1.5em; }
+        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
+        textarea { width: 100%; min-height: 150px; font-family: monospace; }
+        button { margin-top: 0.5em; }
+        .error { color: red; margin-top: 0.5em; display: none; }
+        .output { background: #f4f4f4; padding: 1em; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Check Direct Certificate</h1>
+
+    <p>This tool checks for certificates in DNS or a public LDAP server based on the 
+        endpoint entered. Please see the  <a href="{% url 'directcheck:api_doc' %}">API Documentation</a>.
+        In addition, a <a href="{% url 'directcheck:form_example' %}">backend form validation example</a> is also provided.
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        const endpointInput = document.getElementById('endpoint-input');
+        const jsonOutput = document.getElementById('json-output');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const endpoint = endpointInput.value.trim();
+            if (!endpoint) {
+                jsonOutput.value = 'Please enter an endpoint';
+                return;
+            }
+            
+            fetch(`/directcheck/api/${endpoint}`)
+                .then(response => response.json())
+                .then(data => {
+                    jsonOutput.value = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    jsonOutput.value = `Error: ${error.message}`;
+                });
+        });
+    });
+    </script>
+<p> Paste a Direct endpoint in the form field below and click "Check.
+</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="endpoint-input">Endpoint Input</label>
+            <textarea id="endpoint-input" name="endpoint-input" placeholder="Paste Direct endpoint here">{{ endpoint_input }}</textarea>
+            <button type="button" onclick="clearEndpointInput()">Clear Endpoint Input</button>
+        </div>
+        <div class="form-group">
+            <label for="json-output">JSON Output</label>
+            <textarea id="json-output" name="json-output" readonly placeholder="JSON will appear here">{% if parsed_json %}{{ parsed_json|safe }}{% endif %}</textarea>
+        </div>
+        <button type="submit">Check</button>
+    </form>
+    {% if error %}
+        <div class="error">Error: {{ error }}</div>
+    {% endif %}
+    <script>
+        function clearEndpointInput() {
+            document.getElementById('endpoint-input').value = '';
+        }
+        
+        // Update the existing fetch call to handle invalid status
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const endpointInput = document.getElementById('endpoint-input');
+            const jsonOutput = document.getElementById('json-output');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const endpoint = endpointInput.value.trim();
+                if (!endpoint) {
+                    jsonOutput.value = 'Please enter an endpoint';
+                    jsonOutput.style.color = 'black';
+                    return;
+                }
+                
+                fetch(`/directcheck/api/${endpoint}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        jsonOutput.value = JSON.stringify(data, null, 2);
+                        jsonOutput.style.color = (data.valid === false) ? 'red' : 'black';
+                    })
+                    .catch(error => {
+                        jsonOutput.value = `Error: ${error.message}`;
+                        jsonOutput.style.color = 'red';
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

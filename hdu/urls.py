@@ -22,6 +22,7 @@ urlpatterns = [
     path('cda2fhir/', include('apps.cda2fhir.urls')),
     path('verify-npi/', include('apps.vnpi.urls')),
     path('labcheck/', include('apps.labcheck.urls')),
+    path('directcheck/', include('apps.directcheck.urls')),
     path('.well-known/', include('apps.usahealthmap.urls')),
     path('', include('apps.home.urls')),
 ]
