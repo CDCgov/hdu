@@ -8,3 +8,4 @@ pillow
 django-getenv
 django-localflavor
 luhn
+getdc
