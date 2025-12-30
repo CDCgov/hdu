@@ -11,11 +11,17 @@ def api_doc(request):
 
 def api(request):
     url = request.GET.get('url', '')
+    include_details = request.GET.get('include_details', 'false').lower()
+    if include_details in ['true', 'True']:
+        include_details = True
+    else:
+        include_details = False
+    # print(f"Received URL: {url}, Include Details: {include_details}")  # Debug statement
 
     if not check_if_url_is_valid(url):
         return JsonResponse({'error': f"The provided URL {url} is not valid or reachable."}, status=400)    
 
-    result = fhir_recognizer(url)
+    result = fhir_recognizer(url, include_details=include_details)
     
     return JsonResponse(result, status=200, json_dumps_params={'indent': 2})
 
