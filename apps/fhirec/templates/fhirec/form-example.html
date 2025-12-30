@@ -1,0 +1,57 @@
+
+{% extends "home/base.html" %}
+{% load i18n %}
+{% block title %}Health Data Quality APIs, Tools, and Libraries - FHIR Server Inspector Form Example{% endblock %}
+{% block content %}
+  <div class="row">
+        <div class="col-lg-12">
+            <h1>FHIR Server Inspector - A form-based example</small></h1>
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col">
+        {% if messages %}
+        <div id="messages">
+            {% for message in messages %}
+                <div class="alert alert-dismissable alert-{{message.tags}}" style="background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
+                    <span>{{message|safe}}</span>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        </div>
+    </div>
+
+
+        <div class="row">
+        <div class="col-12">
+
+            <div class="row">
+            <div class="col-12">
+                <form class="custom-form" method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div style="color: red; margin-top: 0.5em;">
+                        {{ field.errors }}
+                        </div>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+                <p><input type="submit" class="btn btn-primary"  value="{% trans 'Inspect FHIR Server' %}" /></p>
+                <p><a href="javascript:history.go(-1)">{% trans "Go Back" %}</a></p>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </body>
+    </html>
+    </div>
+</div>
+</div>
+{% endblock %}

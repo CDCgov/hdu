@@ -1,0 +1,21 @@
+{% extends "home/base.html" %}
+{% load i18n %}
+
+
+
+
+
+{% block title %}Health Data Quality APIs, Tools, and Libraries - FHIR Server Inspector{% endblock %}
+
+{% block content %}
+    <h1>FHIR Server Inspector</h1>
+    <h2> Examine a FHIR server's capability statement and related metadata </h2>
+    <p>Provide an URL (e.g. https//:example.com) and get a report on the server's FHIR capabilities including discovery for FHIR CapabilityStatement, 
+        SMART, OAuth2, OpenID Connect(OIDC), and Swagger/OpenAPI documentation. Useful for FHIR server analysis, 
+         discovery, and troubleshooting.</p>
+         <p>See the <a href="{% url 'fhirec:api_form_example' %}">Form Example</a> to try it out.</p>
+         <p>See the <a href="{% url 'fhirec:api_doc' %}">API documentation</a> for more details.</p>
+    
+
+
+{% endblock %}
