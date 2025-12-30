@@ -1,0 +1,63 @@
+{% extends "home/base.html" %}
+
+{% block title %}FHIR Inspector Web-based API Documentation{% endblock %}
+
+{% block content %}
+
+    <h1>FHIR Inspector Web-based API Documentation</h1>
+    <p>Check the details of a FHIR server by supplying a URL. This tool can be used in front-end tool validation as illustrated in the demonstration.</p>
+    <h3>Example API Request</h3>
+
+    <pre>
+         curl -G --data-urlencode "url=https://example.com/fhir" --data-urlencode "include_details=true" {{ request.scheme }}s://{{ request.META.HTTP_HOST }}{% url 'fhirec:api' %}
+    </pre>
+    
+<p>Please note that the `url` parameter is required and must be urlencoded. Providing "include_details=true" is optional. If it is provided, the request's response 
+    will include the discovery documents it finds and additional .</p>
+
+    <h3>API Response</h3>
+    
+    <p>The API response contains JSON with details about what endpoints were discovered.</p>
+    <pre>
+{
+  "report": {
+    "fhir_metadata": {
+      "url": "https://example.com/api/fhir/rt_burdphysicaltherapy/metadata",
+      "found": true
+    },
+    "oidc_discovery": {
+      "url": "https://example.com/.well-known/openid-configuration",
+      "found": true
+    },
+    "oauth2_discovery": {
+      "url": "https://example.com/.well-known/oauth-authorization-server",
+      "found": true
+    },
+    "smart_discovery_1": {
+      "url": "https://example.com/.well-known/smart-configuration",
+      "found": false
+    },
+    "smart_discovery_2": {
+      "url": "https://example.com/api/fhir/rt_burdphysicaltherapy/.well-known/smart-configuration",
+      "found": true
+    },
+    "documentation_ui": {
+      "found": true,
+      "https://example.com/swagger": true,
+      "https://example.com/docs": true,
+      "https://example.com/api-docs": true,
+      "https://example.com/documentation": true
+    },
+    "swagger_json": {
+      "found": true,
+      "https://example.com/swagger.json": false,
+      "https://example.com/openapi.json": false,
+      "https://example.com/api/swagger.json": false,
+      "https://example.com/api/openapi.json": false,
+      "https://example.com/swagger/v1/swagger.json": true
+    }
+  }
+
+    </pre>
+
+{% endblock%}
