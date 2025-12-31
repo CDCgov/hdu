@@ -9,3 +9,4 @@ django-getenv
 django-localflavor
 luhn
 getdc
+ifhir
