@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from .forms import FHIRInspectorForm
-from ifhir.ifhir import fhir_recognizer, check_if_url_is_valid
+from inspectorfhir.ifhir import fhir_recognizer, check_if_url_is_valid
 
 def index(request):
     return render(request, 'fhirec/index.html')

@@ -1,5 +1,5 @@
 from django import forms
-from ifhir.ifhir import check_if_url_is_valid
+from inspectorfhir.ifhir import check_if_url_is_valid
 
 class FHIRInspectorForm(forms.Form):
     url = forms.CharField(
