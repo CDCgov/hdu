@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Check Direct Certificate</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        .form-group { margin-bottom: 1.5em; }
-        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
-        textarea { width: 100%; min-height: 150px; font-family: monospace; }
-        button { margin-top: 0.5em; }
-        .error { color: red; margin-top: 0.5em; display: none; }
-        .output { background: #f4f4f4; padding: 1em; border-radius: 5px; }
-    </style>
-</head>
-<body>
+{% extends "home/base.html" %}
+{% block title %}Check Direct Endpoint - API Documentation{% endblock %}
+{% block content %}
     <h1>Check Direct Certificate</h1>
 
     <p>This tool checks for certificates in DNS or a public LDAP server based on the 
@@ -99,5 +86,4 @@
             });
         });
     </script>
-</body>
-</html>
+{% endblock %}
