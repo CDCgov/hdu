@@ -1,8 +1,6 @@
-# Health Data Utilties
+# Health Data Utilties (hdu)
 
-Health Data Utilties (hdu)
-
-This repository contains a collection of tools to perform the following:
+This repository contains a collection of tools that perform the following:
 
 
 * FHIR ValueSet Resources - Content Delivery Netowrk (CDN) - Fetch Read-only FHIR endpoints to get codeset information (e.g. condition codes.)
@@ -13,6 +11,9 @@ This repository contains a collection of tools to perform the following:
 * National Provider Identifier (NPI) Validation - Validate an NPI number before submitting it for processing.
 * Direct Check a Direct Address or Endpoint - Fetch certificates in DNS and LDAP(Public) for a given Direct endpoint or email address in DNS.
 
+
+This repo a Django 5 project, however, the tools and libraries can be accessed in Python3 or via command-line utility. 
+Each tool is seperated into its own individual Django app.  Django is not needed to use the underlying Python3 libraries of the command-line utilities.  Individual apps live under the `apps` folder.  Be sure to first  install requirements using the command `pip install -r requirements.txt`.
 
 
 ## License Standard Notice
