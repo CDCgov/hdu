@@ -1,18 +1,17 @@
-# CDCGov Health Data Utilties
+# Health Data Utilties
 
-Health Data Utilties
+Health Data Utilties (hdu)
 
-Thhe `hdu` repository will contain a set of software and services to perform some of the following:
-
-* batch processing and data quality checks including (`labcheck`, `hl7check`, `cda2fhir`.)
-* provider/entity data checks (`usahealthmap`). A prototype national directory.
-
-...more to come.
+This repository contains a collection of tools to perform the following:
 
 
-
-
-
+* FHIR ValueSet Resources - Content Delivery Netowrk (CDN) - Fetch Read-only FHIR endpoints to get codeset information (e.g. condition codes.)
+* FHIR Server Inspector - Fetch a FHIR server's discoverable metadata including its capability statement, SMART configuration, and more.
+* CDA2FHIR Parsing Tool - Convert CDA(XML) to FHIR JSON Bundle.
+* Data Element and Code Value Specific APIs - Content Delivery Netowrk (CDN) - Fetch information on Data Elements and specific code values.
+* HL7v2 Validation and Parsing Tool - Parse HL7v2 messages into a JSON object.
+* National Provider Identifier (NPI) Validation - Validate an NPI number before submitting it for processing.
+* Direct Check a Direct Address or Endpoint - Fetch certificates in DNS and LDAP(Public) for a given Direct endpoint or email address in DNS.
 
 
 
