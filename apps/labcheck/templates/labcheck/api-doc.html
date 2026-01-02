@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>HL7 Validator and Parser</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        .form-group { margin-bottom: 1.5em; }
-        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
-        textarea { width: 100%; min-height: 150px; font-family: monospace; }
-        button { margin-top: 0.5em; }
-        .error { color: red; }
-        .output { background: #f4f4f4; padding: 1em; border-radius: 5px; }
-    </style>
-</head>
-<body>
-
+{% extends "home/base.html" %}
+{% block content %}
     <h1>HL7 Validator and Parser RESTful API</h1>
     <p>Convert HL7v2 messages to a JSON format. Do not include any PHI or sensitive information in the HL7 message unless you trust the 
     host in the URL. Here is an example using curl</p>
@@ -98,5 +83,6 @@
 
 </pre>
 
-</body>
-</html>
+<p><a href="{% url 'labcheck:index' %}">← Back to HL7 Validator and Parser</a></p>
+</div
+{% endblock %}
