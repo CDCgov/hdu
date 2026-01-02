@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Verify a National Provider Identifier (NPI)</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        .form-group { margin-bottom: 1.5em; }
-        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
-        textarea { width: 100%; min-height: 150px; font-family: monospace; }
-        button { margin-top: 0.5em; }
-        .error { color: red; margin-top: 0.5em; display: none; }
-        .output { background: #f4f4f4; padding: 1em; border-radius: 5px; }
-    </style>
-</head>
+{% extends "home/base.html" %}
+{% load i18n %}
+{% block title %}NPI Validation Tool and API{% endblock %}
+{% block content %}
 <body>
     <h1>Verify a National Provider Identifier (NPI)</h1>
 
     <p>This tool and API allows you to validate NPI numbers using the Luhn algorithm before submitting forms or processing data. It does not check if the NPI number has been issued or assigned by CMS NPPES.
-        It checks if the number is valid according to the algorithm specified in the <a href="https://www.cms.gov/regulations-and-guidance/administrative-simplification/nationalprovidentstand/downloads/npifinalrule.pdf">NPI Final Rule</a>. </p>
-    <a href="{% url 'vnpi:api_doc' %}">API Documentation</a>
+        It checks if the number is valid according to the algorithm specified in the <a href="https://www.cms.gov/regulations-and-guidance/administrative-simplification/nationalprovidentstand/downloads/npifinalrule.pdf">NPI Final Rule</a>.
+        See the <a href="{% url 'vnpi:api_doc' %}">API documentation here</a>.</p>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.querySelector('form');
@@ -98,5 +87,4 @@
             });
         });
     </script>
-</body>
-</html>
+{% endblock %}

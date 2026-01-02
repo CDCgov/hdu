@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Verify NPI API (Offline check)</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        .form-group { margin-bottom: 1.5em; }
-        label { display: block; margin-bottom: 0.5em; font-weight: bold; }
-        textarea { width: 100%; min-height: 150px; font-family: monospace; }
-        button { margin-top: 0.5em; }
-    </style>
-</head>
-<body>
-    <h1>Verify NPI API (Offline check)</h1>
-    <p>Check to see if an NPI number is valid by using the Luhn algorithm.  This is similiar to a check of a credit card number before it is submitted.
-        This tool can be used in front-end tool validation as illustrated in the demonstration.</p>
+{% extends "home/base.html" %}
+{% block title %}Verify a National Provider Identifier(NPI) - API Documentation{% endblock %}
+{% block content %}
+    <h1>Verify a National Provider Identifier(NPI) - API Documentation</h1>
+    <p>Verify if an NPI number appears to be valid by using the Luhn algorithm specified in the NPI Final Rule.  This verification 
+        is similiar to a check of a credit card number before it is submitted.
+        This tool can be used in front-end validation and data quality checks.</p>
     <h3>API Request</h3>
 
     <pre>
@@ -63,6 +53,4 @@
 }
  </pre>
 
-
-</body>
-</html>
+{% endblock %}
