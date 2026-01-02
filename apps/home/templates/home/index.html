@@ -1,28 +1,30 @@
 {% extends "home/base.html" %}
 {% load i18n %}
 
-{% block title %}Health Data Quality APIs, Tools, and Librarie - Home{% endblock %}
+{% block title %}Health Data Quality APIs, Tools, and Libraries - Home{% endblock %}
 {% block content %}
     <h1>Health Data Quality Utilities</h1>
-    <h2> APIs, Command-line tools, and Python Libraries </h2>
-    <p>This is a collection of tools that may be downloaded to operate within your own environment, either by accessing 
-        equivalent command-line tools or by hosting these web service APIs locally.</p>
-    <p>The links allow you to try out the functionality in a live environment. Only use sample data when testing.</p>
+    <h2>APIs, Command-line tools, and Python Libraries </h2>
+    <p>These tools are provided as-is and as a proof of concept(POC). 
+    You are encouraged to download and operate these resiources within your own environment, either by accessing 
+        equivalent command-line tools or by hosting these web service APIs locally. Source code links are provided 
+        below for each project. Code contributions should be submitted via a pull request.</p>
     <ul>
-        <li><a href="{% url 'fhirec:index' %}">FHIR Server Inspector</a> - Examine a FHIR server's capability statement and related metadata.</li>
-        <li><a href="https://dataquality.cdcmeta.com">Data Quality Tools and APIs</a> - FHIR Codeset APIs, Codeset APIs, and CSVs.</li>
-        <li><a href="https://cdcmeta.com">USCDI+ Cheat Sheets for Public Health</a> - CSV tables and JSON files with simplified access to US Core FHIR Profiles URLS, descriptions, names, and more.</li>
+        <li><a href="https://dataquality.cdcmeta.com/fhir/index.html">FHIR ValueSet Resources - Content Delivery Netowrk (CDN)</a> - Fetch Read-only FHIR endpoints to get codeset information 
+            (e.g. condition codes.)</li>
+        <li><a href="{% url 'fhirec:index' %}">FHIR Server Inspector</a> - Fetch a FHIR server's discoverable metadata including its capability statement, SMART configuration, and more.</li>
         <li><a href="{% url 'cda2fhir:index' %}">CDA2FHIR Parsing Tool</a> - Convert CDA(XML) to FHIR JSON Bundle.</li>
-        <li><a href="{% url 'labcheck:index' %}">HL7v2 Validation and Parsing Tool</a> -Parse HL7v2 messages into a JSON object.</li>
-        <li><a href="{% url 'vnpi:index' %}">Validate a National Provider Identifier (NPI)</a> -Check to see if an NPI number appears to be valid in a form before submitting for processing.</li>
-        <li><a href="{% url 'directcheck:index' %}">Check a Direct Address or Endpoint</a> -Check to see if a certificate can be found for Direct endpoint/address in DNS and/or public LDAP.</li>
+        <li><a href="https://dataquality.cdcmeta.com">Data Element and Code Value Specific APIs - Content Delivery Netowrk (CDN)</a> - Fetch information on Data Elements and specific code values.</li>   
+        <li><a href="{% url 'labcheck:index' %}">HL7v2 Validation and Parsing Tool</a> - Parse HL7v2 messages into a JSON object.</li>
+        <li><a href="{% url 'vnpi:index' %}">National Provider Identifier (NPI) Validation</a> - Validate an NPI number before submitting it for processing.</li>
+        <li><a href="{% url 'directcheck:index' %}">Direct Check a Direct Address or Endpoint</a> - Fetch certificates in DNS and LDAP(Public) for a given Direct endpoint or email address in DNS.</li>
     </ul>
 
 
 
     <h1>Source Code</h1>
     <p>
-      Code provided here is for research and development purposes only.  Please see the individual project repositories for more information.
+      Code provided here is for research and development purposes only.  Please see the individual project repositories for more information. Pull requersts are welcome.
     </p>
     <ul>
         <li><a href="https://github.com/CDCgov/rmeta/">ReportMeta(CDCgov/rmeta)</a> - Contains the USCDI+ cheatsheets, tools for building the dataquality CDN, and more.</li>
