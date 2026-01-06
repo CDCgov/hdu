@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["hdu.cdcmeta.com","localhost",]
 CSRF_TRUSTED_ORIGINS = ['https://cdcmeta.com', "http://localhost", "https://hdu.cdcmeta.com"]
 
-CORS_ALLOWED_ORIGINS = ['https://cdcmeta.com', "https://hdu.cdcmeta.com"
+CORS_ALLOWED_ORIGINS = ['https://cdcmeta.com', "https://hdu.cdcmeta.com",
                         "http://localhost:8080",
                         "http://localhost:8000"]
 
@@ -49,8 +49,13 @@ INSTALLED_APPS = [
     'apps.fhirec',
     'apps.directcheck',
     'apps.usahealthmap',
+    'apps.frontdoor',
+    'corsheaders',
+    'oauth2_provider',
 
 ]
+OAUTH2_PROVIDER_APPLICATION_MODEL="oauth2_provider.Application"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'hdu.urls'
