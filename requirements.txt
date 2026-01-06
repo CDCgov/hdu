@@ -10,3 +10,4 @@ django-localflavor
 luhn
 getdc
 inspectorfhir
+django-cors-headers
