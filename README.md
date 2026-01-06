@@ -9,7 +9,7 @@ This repository contains a collection of tools that perform the following:
 * Data Element and Code Value Specific APIs - Content Delivery Netowrk (CDN) - Fetch information on Data Elements and specific code values.
 * HL7v2 Validation and Parsing Tool - Parse HL7v2 messages into a JSON object.
 * National Provider Identifier (NPI) Validation - Validate an NPI number before submitting it for processing.
-* Direct Check a Direct Address or Endpoint - Fetch certificates in DNS and LDAP(Public) for a given Direct endpoint or email address in DNS.
+* Check a Direct Address or Endpoint - Fetch certificates in DNS and LDAP(Public) for a given Direct endpoint or email address.
 
 
 This repo a Django 5 project, however, the tools and libraries can be accessed in Python3 or via command-line utility. 
