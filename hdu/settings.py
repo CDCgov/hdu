@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'apps.fhirec',
     'apps.directcheck',
     'apps.usahealthmap',
-    'apps.frontdoor',
     'corsheaders',
     'oauth2_provider',
 
