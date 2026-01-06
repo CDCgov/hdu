@@ -11,3 +11,4 @@ luhn
 getdc
 inspectorfhir
 django-cors-headers
+django-oauth-toolkit
